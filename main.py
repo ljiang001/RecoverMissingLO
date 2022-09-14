@@ -75,7 +75,7 @@ def lo_recover_by_range(min_oid, max_oid):
     target_cur = target_conn.cursor()
 
     # find oid that exist in source but not in target
-    select_oid_query = f"SELECT loid FROM pg_largeobject WHERE loid >={min_oid} AND loid <= {max_oid};"
+    select_oid_query = f"SELECT loid FROM pg_largeobject WHERE loid >={min_oid} AND loid < {max_oid};"
     target_cur.execute(select_oid_query)
     target_oids_set = set()
     target_oid_row = target_cur.fetchone()
