@@ -156,3 +156,5 @@ logs/
 *.ini
 schema*
 migration_*
+
+log*

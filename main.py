@@ -6,7 +6,6 @@ import psycopg2
 import time
 from datetime import datetime
 import sys
-sys.path.append('../src')
 import os
 
 parser = argparse.ArgumentParser()
@@ -121,10 +120,7 @@ def start_process(procs):
     for p in procs:
         p.join()
 
-def main():
-    min_oid = int(sys.argv[0])
-    max_oid = int(sys.argv[1])
-
+def main(min_oid, max_oid):
     if not verify_db_connections(CONFIG):
         quit()
 
@@ -150,4 +146,6 @@ def main():
     start_process(recover_procs)
 
 if __name__ == "__main__":
-    main()
+    MIN_OID = 90000
+    MAX_OID = 100000
+    main(MIN_OID, MAX_OID)
